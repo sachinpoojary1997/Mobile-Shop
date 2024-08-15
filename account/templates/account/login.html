@@ -1,0 +1,27 @@
+{% extends "account/base.html" %}
+{% block title %} Login {% endblock title %}
+{% load form_tags %}
+{% block main_content %}
+<div class="container vh-100">
+<main class="form-signin w-50 m-auto p-2 pt-5">
+    <form method="post">
+      <img class="mb-4 bi bi-box-arrow-in-right" alt="" width="52" height="37">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+  
+      {% csrf_token %}
+      <div class="form-group">
+          {{ form.username.label_tag }}
+          {{ form.username|add_class:"form-control my-2" }}  <!-- Add Bootstrap class -->
+      </div>
+      <div class="form-group">
+          {{ form.password.label_tag }}
+          {{ form.password|add_class:"form-control my-2 " }}  <!-- Add Bootstrap class -->
+      </div>
+
+      <button class="btn btn-primary w-100 py-2" type="submit" fdprocessedid="47jz6t">Sign in</button>
+      <a href="{% url 'register' %}">Register</a>
+      <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
+    </form>
+  </main>
+</div>
+{% endblock main_content %}

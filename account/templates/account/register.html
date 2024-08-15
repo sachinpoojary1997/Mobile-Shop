@@ -1,0 +1,43 @@
+{% extends "account/base.html" %}
+
+{% load form_tags %}
+
+{% block title %} Register {% endblock title %}
+
+{% block main_content %}
+<div class="container mx-atuo w-50 py-6 m-6">
+ <h2>Register</h2>
+ {% if form.errors %}
+       <ul>
+          {% for feild, errors in form.errors.items %}
+              <li>{{ feild }}: {{ errors }}</li>
+          {% endfor %}
+       </ul>
+ {% endif %}
+<form method="post">
+    {% csrf_token %}
+      <div class="form-floating my-2">
+         {{ form.username |add_class:"form-control" }}
+         {{ form.username.label_tag }}
+         
+      </div>
+      <div class="form-floating my-2">
+         {{ form.email |add_class:"form-control" }}
+         {{ form.email.label_tag }}
+         
+      </div>
+      <div class="form-floating my-2">
+         {{ form.password1 |add_class:"form-control" }}
+         {{ form.password1.label_tag }}
+         
+      </div>
+      <div class="form-floating my-2">
+         {{ form.password2 |add_class:"form-control" }}
+         {{ form.password2.label_tag }}
+         
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+</form>
+</div>
+
+{% endblock main_content %}
